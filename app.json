@@ -5,14 +5,16 @@
     "pages/ShoppingMall/ShoppingMall",
     "pages/OfficialWeb/OfficialWeb"
   ],
+
   "window":{
-    "backgroundTextStyle":"dark",
-    "navigationBarBackgroundColor": "#000",
-    "navigationBarTitleText": "名片商城",
-    "navigationBarTextStyle":"white",
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#ff5a5e",
+    "navigationBarTitleText": "微信名片",
+    "navigationBarTextStyle":"#fff",
     "enablePullDownRefresh":true,
     "backgroundColor":"#eee"
   },
+
   "tabBar":{
     "color":"#707070",
     "selectedColor":"#46cced",
@@ -52,5 +54,5 @@
     "uploadFile":10000,
     "downloadFile": 10000
   },
-  "debug":false
+  "debug":true
 }

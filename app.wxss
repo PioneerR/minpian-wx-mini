@@ -1,4 +1,6 @@
-/**app.wxss**/
+@import "static/wxss/weui.wxss";
+@import "static/wxss/commons.wxss";
+
 .container {
   height: 100%;
   display: flex;
