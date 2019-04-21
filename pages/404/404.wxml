@@ -1,0 +1,12 @@
+<view>
+  <view class='bg'>
+    <view class='header'>嘤嘤嘤！！我把页面玩丢到外星了~~</view>
+    <view class='btn'><view class='verm'>返回首页</view></view>
+    <view class='main verm'>
+      <view class='txt'>给您来段笑话哟~</view>
+      <view class='txt2 verm'>
+        {{joke[index]}}
+      </view>
+    </view>
+  </view>
+</view>

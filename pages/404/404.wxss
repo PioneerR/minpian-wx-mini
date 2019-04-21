@@ -1,0 +1,28 @@
+.bg{
+  width:750rpx;height:1204rpx;text-align: center;
+  background-size: cover;background-repeat: no-repeat;
+  background-position: center;
+  background-image:url(http://img.ciyuanmh.com/ksmall/images/bg.png);
+}
+.header{
+  padding-top:70rpx;
+  color:#fff;
+  line-height: 110rpx;
+  font-size: 28rpx;
+}
+.btn view{
+  height:60rpx;width:230rpx;
+  border-radius: 30rpx;background-color: #fe5b5d;color:#fff;line-height: 60rpx;
+  margin-bottom:60rpx;
+}
+.main{
+  width:540rpx;height:780rpx;
+  background-size:540rpx;background-repeat: no-repeat;background-position: center;
+  background-image:url(http://img.ciyuanmh.com/ksmall/images/tu.png);
+}
+.main .txt{
+  color: #ff5a5b;font-size:28rpx;line-height: 70rpx;padding-top:95rpx;
+}
+.main .txt2{
+  color:#7d7d7d;width:385rpx;font-size:24rpx;line-height: 35rpx;
+}

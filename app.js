@@ -33,10 +33,29 @@ App({
       }
     })
   },
+
+
+
+  /*------------------------------------------- 进入小程序 ----------------------------------------*/
+  enterFn: function () {
+    var toUrl = wx.getStorageSync(this.globalData.CY_ZS_LINK_URL);
+    if (toUrl == "" || undefined == toUrl || "undefined" == toUrl || null == toUrl || "null" == toUrl) {
+      toUrl = "/pages/index/index";
+    }
+    // console.log(toUrl);
+    this.wxRedirectTo(toUrl);
+  },
+
+  /*------------------------------------------- 判断用户是否登陆 ----------------------------------------*/
+  checkLogin: function () {
+    return this.globalData.user.id != null;
+  },
+
+  /*------------------------------------------- 定义全局变量 ----------------------------------------*/
   globalData: {
     user: {},
     wxUser: {},
-    debug: false,
+    debug: true,
 
     //正式环境
     /*url: "http://ksmall.ciyuanmh.com/weixin/mini",
@@ -52,6 +71,9 @@ App({
     CY_ZS_UNOIN_ID: "CY_ZS_UNOIN_ID",//微信unionId
     CY_ZS_AUTH_OPEN_ID: 'CY_ZS_AUTH_OPEN_ID',//本地缓存用户的id
     CY_ZS_MINI_OPEN_ID: 'CY_ZS_MINI_OPEN_ID',//小程序的openId
+
+
+
 
   }
 });
