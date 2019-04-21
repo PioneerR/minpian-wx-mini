@@ -1,0 +1,100 @@
+<view class="page">
+  <view class="fixedNav">
+    <navigator url="{{moreCardURL}}" open-type="{{fixedNavOpenType}}">
+      <image id="imgNavCard" src="{{srcMoreCard}}" mode="{{imgNavMode}}"></image>
+      <text class="fixedCardText">{{moreCard}}</text>
+    </navigator>
+    <navigator url="{{weChatURL}}" open-type="{{fixedNavOpenType}}">
+      <image id="imgNavWeChat" src="{{srcWeChat}}" mode="{{imgNavMode}}"></image>
+      <text class="fixedText">{{consult}}</text>
+    </navigator>
+  </view>
+  <view class="imgView">
+    <image id="imgPhoto" src="{{srcPhoto}}" mode="{{imgMode}}"></image>
+    <view class="basicsInfo">
+      <text class="name">{{name}}</text>
+      <text class="position">{{position}}</text>
+      <text class="company">{{company}}</text>
+    </view>
+    <image id="imgLogo" src="{{srcLogo}}" mode="{{imgLogoMode}}"></image>
+  </view>
+  <view class="contact">
+    <text class="textContact">联系我</text>
+    <view class="contactItem">
+      <text class="contactItemCaption">电话号码</text>
+      <text class="contactItemContent">{{phoneNum}}</text>
+      <text class="contactItemButton" catchtap='callUp'>拨打</text>
+    </view>
+    <view class="contactItem">
+      <text class="contactItemCaption">地址</text>
+      <text class="contactItemContent">{{address}}</text>
+      <text class="contactItemButton" catchtap='openMap'>导航</text>
+    </view>
+    <view class="contactItem {{show?'show':'hide'}}">
+      <text class="contactItemCaption">微信</text>
+      <text class="contactItemContent">{{weChatId}}</text>
+      <text class="contactItemButton" catchtap='copyWeChatId'>复制</text>
+    </view>
+    <view class="contactItem {{show?'show':'hide'}}">
+      <text class="contactItemCaption">邮箱</text>
+      <text class="contactItemContent">{{email}}</text>
+      <text class="contactItemButton" catchtap='copyEmail'>复制</text>
+    </view>
+    <view class="hideOrShow">
+      <text catchtap='ShowMore'>{{moreInfo}}</text>
+    </view>
+  </view>
+  <view class="communication">
+   <view class="shareCard">
+      <image class="communicationImage" src="{{shareImage}}" mode='{{imgMode}}'></image>
+      <text class="txtCommunication">分享名片</text>
+    </view>
+    <view class="exchangePhoneNum">
+      <image class="communicationImage" src="{{exchangeImage}}" mode='{{imgMode}}'></image>
+      <text class="txtCommunication" catchtap='savePhoneNum'>保存联系方式</text>
+    </view>
+  </view>
+  <view class="cardInfo">
+    <view id="browseCount">
+      <image src="{{imgBrowse}}" mode="{{imgMode}}" id="imgBrowse"></image>
+      <text id="txtBrowseCount">浏览量</text>
+    </view>
+    <template name="imgUserTemp">
+      <view class="imgUserView">
+        <image class="imgUser" src="{{imgUser}}" mode="{{imgUserMode}}"></image>
+        <text class="BrowseUsers">{{browseUsers}}</text>
+      </view>
+    </template>
+    <view id="imgUserTempView">
+      <template is="imgUserTemp" data="{{...userA}}"></template>
+      <template is="imgUserTemp" data="{{...userB}}"></template>
+      <template is="imgUserTemp" data="{{...userC}}"></template>
+      <template is="imgUserTemp" data="{{...userD}}"></template>
+      <template is="imgUserTemp" data="{{...userE}}"></template>
+      <template is="imgUserTemp" data="{{...userF}}"></template>
+      <template is="imgUserTemp" data="{{...userG}}"></template>
+    </view>
+    <view class="userStatus">
+      <open-data class="userNickName" type="userNickName" lang="zh_CN"></open-data> 
+      <text class="txtDoWhat">{{doWhat}}</text>
+    </view>
+  </view>
+  <view class="moreInfoOfMine">
+    <text id="txtMoreInfoOfMine">我的更多</text>
+    <template name="moreInfoTemp">
+      <view class="adView">
+        <image class="imgAD" src="{{imgAD}}" mode="{{imgAdMode}}"></image>
+      </view>
+    </template>
+    <view id="moreInfoTempView">
+      <template is="moreInfoTemp" data="{{...ad1}}"></template>
+      <template is="moreInfoTemp" data="{{...ad2}}"></template>
+      <template is="moreInfoTemp" data="{{...ad3}}"></template>
+      <template is="moreInfoTemp" data="{{...ad4}}"></template>
+      <template is="moreInfoTemp" data="{{...ad5}}"></template>
+      <template is="moreInfoTemp" data="{{...ad6}}"></template>
+      <template is="moreInfoTemp" data="{{...ad7}}"></template>
+      <template is="moreInfoTemp" data="{{...ad8}}"></template>
+    </view>
+  </view>
+</view>

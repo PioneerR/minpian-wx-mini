@@ -1,0 +1,32 @@
+/*顶部图片*/
+.headerImgView{
+  padding:0;
+  margin: 0;
+}
+#headerImg{
+  width: 100%;
+  height: 100px;
+}
+.scrollView{
+  display: flex;
+  white-space: nowrap;
+}
+.on{
+  color:crimson;
+  border-bottom: crimson solid 1px;
+}
+.swiperTabList{
+  box-sizing: border-box;
+  font-size:15px;
+  display: inline-block;
+  margin: 5px;
+  margin-right: 15px;
+  margin-bottom: 0;
+  padding-bottom: 5px;
+}
+
+
+.goodList{
+  height: 200px;
+  background-color: #eee;
+}

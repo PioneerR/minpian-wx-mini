@@ -1,0 +1,249 @@
+/*全局*/
+.page{
+  background-color: rgb(235, 235, 235);
+  padding-top:15px;
+}
+.hide{
+  display: none;
+}
+.show{
+  display: block;
+}
+/*固定导航*/
+.fixedNav{
+  width: 50px;
+  position: fixed;
+  top:200px;
+  right: 0;
+  z-index: 999;
+  background-color:#77e3f127;
+  border-radius: 10px 0 0 10px;
+  text-align: center;
+}
+#imgNavCard{
+  width: 30px;
+  height: 30px;
+  display: block;
+  margin: auto;
+  margin-top:10px;
+}
+#imgNavWeChat{
+  width: 30px;
+  height: 30px;
+  display: block;
+  margin: auto;
+}
+.fixedText{
+  font-size: 10px;
+  position: relative;
+  bottom:10px;
+  color:#555454;
+}
+.fixedCardText{
+  font-size: 10px;
+  position: relative;
+  bottom:7px;
+  color:#555454;
+  border-bottom: solid 1px #555454;
+  padding-bottom: 5px;
+}
+/*名片信息*/
+#imgPhoto{
+  background-color: white;
+  width: 100%;
+  height: 220px;
+}
+.imgView{
+  margin:auto;
+  text-align: center;
+  width: 94%;
+  background-color: white;
+  box-shadow: 0px 1px 5px #b8b5b5;
+  border-radius: 5px;
+  overflow: hidden;
+  position: relative;
+}
+.basicsInfo{
+  float: left;
+  padding: 0 0 15px 15px;
+  text-align: left;
+}
+.name{
+  display: block;
+  font-weight: 600;
+  font-size: 20px;
+  color:#363535;
+}
+.position{
+  display: block;
+  margin-top:5px;
+  font-size: 12px;
+  color:#363535;
+}
+.company{
+  display: block;
+  margin-top:3px;
+  font-size: 12px;
+  color:#363535;
+}
+#imgLogo{
+  width: 49px;
+  height: 49px;
+  position:relative;
+  left:65px;
+  top:10px;
+}
+/*联系方式*/
+.contact{
+  width: 86%;
+  margin: 15px auto;
+  background-color:white;
+  border-radius: 5px;
+  padding:4%;
+  padding-bottom:1%;
+  font-size:14px;
+  box-shadow: 0px 1px 5px #b8b5b5;
+}
+.textContact{
+  font-size:15px;
+  font-weight: 600;
+  display: block;
+}
+.contactItem{
+  padding:2% 0;
+  border-bottom: 1px solid #555454;
+}
+.contactItemCaption{
+  width: 23%;
+  display: inline-block;
+}
+.contactItemContent{
+  width: 65%;
+  display: inline-block;
+  color: rgb(27, 27, 110);
+}
+.contactItemButton{
+  border:1px #46cced solid;
+  border-radius: 5px;
+  padding:2px 0;
+  color:#46cced;
+  font-size: 13px;
+}
+.hideOrShow{
+  padding-top: 8px;
+  text-align: center;
+  color: #a5a5a5;
+  font-size: 13px;
+}
+/*浏览量*/
+.cardInfo{
+  width: 86%;
+  margin: 15px auto;
+  background-color: white;
+  border-radius: 5px;
+  padding:0 4%;
+  position: relative;
+  box-shadow: 0px 1px 5px #b8b5b5;
+}
+#txtBrowseCount{
+  font-size: 10px;
+  color: #a5a5a5;
+  margin-left:5px; 
+}
+#browseCount{
+  margin-top: 20px;
+}
+#imgBrowse{
+  width: 11px;
+  height: 11px;
+}
+.imgUser{
+  width: 34px;
+  height: 34px;
+  border-radius: 17px;
+}
+.imgUserView{
+  display: inline-block;
+  width: 34px;
+  height: 34px;
+  border-radius: 17px;
+  margin: 0 4px;
+  background-color: #707070;
+  position: relative;
+}
+.BrowseUsers{
+  position: absolute;
+  font-size: 10px;
+  top:10px;
+  right: 4px;
+  color: white;
+  z-index: 999;
+}
+#imgUserTempView{
+  border-bottom: 1px solid #555454;
+}
+.userStatus{
+  text-align: center;
+}
+.userNickName{
+  font-size: 14px;
+  color: red;
+}
+.txtDoWhat{
+  font-size: 14px
+}
+/*交换联系方式与分享*/
+.communication{
+  width: 90%;
+  margin: 28px auto;
+}
+.shareCard{
+  font-size: 15px;
+  color: white;
+  background-color: rgb(4, 115, 219);
+  display: inline-block;
+  width: 40%;
+  border-radius:10px;
+  margin-right: 12%;
+  padding:8px 2% 5px 2%;
+  text-align: center;
+}
+.exchangePhoneNum{
+  font-size: 15px;
+  color: white;
+  background-color: rgb(4, 115, 219);
+  display: inline-block;
+  width: 40%;
+  border-radius:10px;
+  padding:8px 2% 5px 2%;
+  text-align: center;
+}
+.communicationImage{
+  width: 15px;
+  height: 15px;
+  margin-right: 5px;
+}
+.txtCommunication{
+  position: relative;
+  bottom: 2px;
+}
+/*广告*/
+.moreInfoOfMine{
+  width: 86%;
+  margin:auto;
+  text-align: center;
+  background-color: white;
+  box-shadow: 0px 1px 5px #b8b5b5;
+  padding:15px;
+  border-radius: 5px;
+}
+#txtMoreInfoOfMine{
+  font-size:15px;
+  font-weight: 600;
+  float: left;
+  margin-bottom: 5px;
+}
+.imgAD{
+  width: 320px;
+  height: 450px;
+}

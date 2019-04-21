@@ -1,0 +1,56 @@
+{
+  "pages":[
+    "pages/businessCard/businessCard",
+    "pages/interaction/interaction",
+    "pages/ShoppingMall/ShoppingMall",
+    "pages/OfficialWeb/OfficialWeb"
+  ],
+  "window":{
+    "backgroundTextStyle":"dark",
+    "navigationBarBackgroundColor": "#000",
+    "navigationBarTitleText": "名片商城",
+    "navigationBarTextStyle":"white",
+    "enablePullDownRefresh":true,
+    "backgroundColor":"#eee"
+  },
+  "tabBar":{
+    "color":"#707070",
+    "selectedColor":"#46cced",
+    "backgroundColor": "#fff",
+    "borderStyle": "black",
+    "position": "bottom",
+    "list":[
+      {
+        "pagePath":"pages/businessCard/businessCard",
+        "text":"名片",
+        "iconPath":"images/businessCard_gray_64px.png",
+        "selectedIconPath":"images/businessCard_blue_64px.png"
+      },
+      {
+        "pagePath": "pages/interaction/interaction",
+        "text": "动态",
+        "iconPath": "images/interaction_gray_64px.png",
+        "selectedIconPath": "images/interaction_blue_64px.png"
+      },
+      {
+        "pagePath": "pages/ShoppingMall/ShoppingMall",
+        "text": "商城",
+        "iconPath": "images/ShoppingMall_gray_64px.png",
+        "selectedIconPath": "images/ShoppingMall_blue_64px.png"
+      },
+      {
+        "pagePath": "pages/OfficialWeb/OfficialWeb",
+        "text": "官网",
+        "iconPath": "images/OfficialWeb_gray_64px.png",
+        "selectedIconPath": "images/OfficialWeb_blue_64px.png"
+      }
+    ]
+  },
+  "networkTimeout":{
+    "request":10000,
+    "connectSocket":10000,
+    "uploadFile":10000,
+    "downloadFile": 10000
+  },
+  "debug":false
+}
