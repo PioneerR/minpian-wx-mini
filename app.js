@@ -34,6 +34,24 @@ App({
     })
   },
   globalData: {
-    userInfo: null
+    user: {},
+    wxUser: {},
+    debug: false,
+
+    //正式环境
+    /*url: "http://ksmall.ciyuanmh.com/weixin/mini",
+    uploadUrl: "http://ksmall.ciyuanmh.com/",
+    loginUrl: 'https://ksmall.ciyuanmh.com/weixin/mini/login',*/
+
+    //本地环境
+    url:"http://localhost:8080/mingpian/weixin-mini",
+    uploadUrl:"http://localhost:8080/mingpian/",
+    loginUrl:'https://localhost:8080/mingpian/weixin-mini/login',
+
+    openId: '',
+    CY_ZS_UNOIN_ID: "CY_ZS_UNOIN_ID",//微信unionId
+    CY_ZS_AUTH_OPEN_ID: 'CY_ZS_AUTH_OPEN_ID',//本地缓存用户的id
+    CY_ZS_MINI_OPEN_ID: 'CY_ZS_MINI_OPEN_ID',//小程序的openId
+
   }
 });
