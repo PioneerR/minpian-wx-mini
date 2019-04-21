@@ -1,0 +1,19 @@
+.header{
+  position:relative;
+}
+swiper{
+  height:470rpx;
+}
+.slide-image{
+  width:750rpx;
+  height:470rpx;
+}
+.header .choice{
+  position:absolute;
+  top:14rpx;
+  color:#fff;
+  width:100%;
+  left:0;
+  height:58rpx;
+  text-align: center;
+}

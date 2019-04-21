@@ -1,0 +1,8 @@
+<import src="/static/toast/toast.wxml"/>
+<template is="wxToast" data="{{...wxToastConfig}}"></template>
+<view>
+  <view class='header'>
+  	<web-view src = "{{url}}"></web-view>
+  </view>
+   
+</view>
