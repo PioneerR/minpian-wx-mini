@@ -1,0 +1,581 @@
+<import src="/static/toast/toast.wxml"/>
+<template is="wxToast" data="{{...wxToastConfig}}"></template>
+<view>
+    <scroll-view style='height:100vh;color:transparent;' scroll-y="{{true}}" scroll-into-view="{{toView}}" scroll-with-animation="{{true}}" bindscroll="waitToTab">
+        <view class='main-top bg-white'>
+            <view class='header'>
+                <swiper indicator-dots="{{indicatorDots}}"
+                        autoplay="{{true}}" interval="{{5000}}" duration="{{1000}}" indicator-color="#ddd" indicator-active-color="#ff5a5e">
+                    <block wx:for="{{adVos}}" wx:key="unique">
+                        <swiper-item bindtap="goAd" data-id="{{item.id}}" data-cartoon-id="{{item.cartoonCollectionId}}" data-stat-type="0" data-url="{{item.url}}">
+                            <image src="{{item.miPicUrl}}" class="slide-image"/>
+                        </swiper-item>
+                    </block>
+                </swiper>
+                <view class="choice">
+                    <view class='right-div pull-right'>
+                        <image bindtap="goSearch" data-type="1" src="{{imgone}}" class="right-search"/>
+                    </view>
+                    <view class='choice-change '>
+                        <view class='vert on'>首页</view>
+                        <view class='vert' bindtap="goClassify" data-type="0">分类</view>
+                    </view>
+                </view>
+            </view>
+            <view class='white-img'>
+                <image mode='widthFix' src='http://img.ciyuanmh.com/ksmall/images/iconcover.png'/>
+            </view>
+
+            <view class='inform'>
+                <view class='activity verm' bindtap="goActivity">
+                    <view class='verm'></view>
+                </view>
+                <view class='weal verm' bindtap="goTask" wx-if="{{isShowPayContent}}">
+                    <view class='verm'></view>
+                </view>
+            </view>
+
+            <!-- <view class="tab">
+              <view class='verm' data-type = '6' bindtap="goMore" data-sort="1" data-genre="1">
+                <image src='http://img.ciyuanmh.com/ksmall/images/index_recommend_boy_icon.png'/>
+              </view>
+              <view class='verm' data-type = '7' bindtap="goMore" data-sort="2" data-genre="1">
+                <image src='http://img.ciyuanmh.com/ksmall/images/index_hot_boy_icon.png'/>
+              </view>
+              <view class='verm' data-type = '8' bindtap="goMore" data-sort="3" data-genre="1">
+                <image src='http://img.ciyuanmh.com/ksmall/images/index_new_boy_icon.png'/>
+              </view>
+            </view> -->
+            <view class='nav'>
+                <view class='vert version' data-type="4" bindtap="goRank">
+                    <view class='img-one img'>
+                        <image src="https://img.ciyuanmh.com/ksmall/images/index_girl_icon.png"/>
+                    </view>
+                    <view class='txt'>女生榜</view>
+                </view>
+                <view class='vert version' data-type="5" bindtap="goRank">
+                    <view class='img-two img'>
+                        <image src="https://img.ciyuanmh.com/ksmall/images/index_boy_icon.png"/>
+                    </view>
+                    <view class='txt'>男生榜</view>
+                </view>
+                <view class='vert version' data-type="3" bindtap="goRank">
+                    <view class='img-three img'>
+                        <image src="https://img.ciyuanmh.com/ksmall/images/index_popularity_icon.png"/>
+                    </view>
+                    <view class='txt'>人气榜</view>
+                </view>
+                <view class='vert version' data-type="2" bindtap="goRank">
+                    <view class='img-four img'>
+                        <image src="https://img.ciyuanmh.com/ksmall/images/index_new_icon.png"/>
+                    </view>
+                    <view class='txt'>新作榜</view>
+                </view>
+                <view class='vert version' data-type="40" bindtap="goRank">
+                    <view class='img-five img'>
+                        <image src="https://img.ciyuanmh.com/ksmall/images/index_chase_icon.png"/>
+                    </view>
+                    <view class='txt'>追更榜</view>
+                </view>
+            </view>
+            <view class="main">
+                <view class='recommend' wx:if="{{todayRecommends.length>0}}">
+                    <view class='recommend-header text-center'>
+                        <view class='pull-right' data-type='6' data-sort="1" data-genre="1" bindtap="goMore">
+                            <view class='verm'>查看更多</view>
+                            <image class='verm' src="http://img.ciyuanmh.com/ksmall/images/index_more_icon.png"/>
+                        </view>
+                        今日推荐
+                    </view>
+                    <view class='recommend-main'>
+                        <block wx:for="{{todayRecommends}}" wx:for-index="idx" wx:key="unique">
+                            <view wx-if="{{idx==0}}" class="recommend-one recommend-three" data-id="{{item.id}}" bindtap='goCartoon' data-type="1" data-genre="0">
+                                <image src='{{item.miAcrossPicUrl}}'/>
+                                <!-- <view class='txt3'>  -->
+                                <view class='txt1 eli'>{{item.name}}</view>
+                                <view class='txt4 eli' wx:if="{{item.content}}">
+                                    <!-- <view class='verm'>{{item.typeName}}</view> -->
+                                    {{item.content}}
+                                </view>
+                                <!-- </view>  -->
+                            </view>
+
+                            <view wx-if="{{idx>0}}" class='recommend-one recommend-two vert' data-id="{{item.id}}" bindtap='goCartoon' data-type="1" data-genre="0">
+                                <image src='{{item.miPicUrl}}'/>
+                                <view class='txt1 eli'>{{item.name}}</view>
+                                <view class='txt4 eli' wx:if="{{item.content}}" decode="{{true}}" space="{{true}}">{{item.content}}</view>
+                            </view>
+                        </block>
+                        <!-- <block>
+                           <view class="recommend-one recommend-three" data-id="{{todayRecommendo.id}}" bindtap='goCartoon' data-type="1" data-genre="0">
+                             <image src='{{todayRecommendo.miAcrossPicUrl}}'/>
+                             <view class='txt3'>
+                               <view>{{todayRecommendo.name}}</view>
+                               <view class='txt4 eli'><view class='verm'>{{todayRecommendo.typeName}}</view>{{todayRecommendo.content}}</view>
+                             </view>
+                           </view>
+                         </block>
+                         <block wx:for="{{todayRecommendt}}" wx:key="unique">
+                           <view class='recommend-one recommend-two vert' data-id="{{item.id}}" bindtap='goCartoon' data-type="1" data-genre="0">
+                             <image src='{{item.miPicUrl}}'/>
+                             <view class='txt3 eli'>{{item.name}}</view>
+                             <text class='txt2'  decode="{{true}}" space="{{true}}">{{item.labelName}}</text>
+                           </view>
+                         </block>-->
+                    </view>
+                </view>
+                <view bindtap="goAd" data-cartoon-id="{{bannerVos[0].cartoonCollectionId}}" data-type="{{bannerVos[0].type}}" data-url="{{bannerVos[0].url}}" data-stat-type="11"
+                      class='recommend-bottom' wx:if="{{todayRecommends.length > 0 && bannerVos != null && bannerVos[0] != null && bannerVos[0].status == 0}}">
+                    <image src='{{bannerVos[0].miPicUrl}}'/>
+                </view>
+                <view class='recommend' wx:if="{{hotRecommends.length>0}}">
+                    <view class='recommend-header text-center '>
+                        <view class='pull-right' data-type='7' data-sort="2" data-genre="1" bindtap="goMore">
+                            <view class='verm'>查看更多</view>
+                            <image class='verm' src="http://img.ciyuanmh.com/ksmall/images/index_more_icon.png"/>
+                        </view>
+                        热门推荐
+                    </view>
+                    <view class='recommend-main on'>
+                        <block wx:for="{{hotRecommends}}" wx:key="unique">
+                            <view class='recommend-one on vert' data-id="{{item.id}}" bindtap='goCartoon' data-type="2" data-genre="0">
+                                <image src='{{item.miAcrossPicUrl}}'/>
+                                <view class='txt1 eli'>{{item.name}}</view>
+                                <text class='txt2 eli' decode="{{true}}" space="{{true}}">{{item.labelName}}</text>
+                            </view>
+                        </block>
+                    </view>
+                </view>
+                <view bindtap="goAd" data-cartoon-id="{{bannerVos[1].cartoonCollectionId}}" data-type="{{bannerVos[1].type}}" data-url="{{bannerVos[1].url}}" data-stat-type="11"
+                      class='recommend-bottom' wx:if="{{hotRecommends.length>0 && bannerVos != null && bannerVos[1] != null && bannerVos[1].status == 0}}">
+                    <image src='{{bannerVos[1].miPicUrl}}'/>
+                </view>
+                <view class='recommend' wx:if="{{newCartoons.length>0}}">
+                    <view class='recommend-header text-center '>
+                        <view class='pull-right' data-type='8' data-sort="3" data-genre="1" bindtap="goMore">
+                            <view class='verm'>查看更多</view>
+                            <image class='verm' src="http://img.ciyuanmh.com/ksmall/images/index_more_icon.png"/>
+                        </view>
+                        新作抢先看
+                    </view>
+                    <view class='recommend-main  box-line' style="">
+                        <view class='line2'></view>
+                        <view class="recommend-one recommend-three" wx:for="{{newCartoons}}" wx:key="unique" wx:for-index="idx" wx-if="{{idx==0}}" data-id="{{item.id}}" bindtap='goCartoon'
+                              data-type="3" data-genre="0">
+                            <image src='{{item.miAcrossPicUrl}}'/>
+                            <view class='txt3'>
+                                <view>{{item.name}}</view>
+                                <view class='txt4 eli'>
+                                    <view class='verm'>{{item.typeName}}</view>
+                                    {{item.content}}
+                                </view>
+                            </view>
+                        </view>
+                        <!-- <swiper cricular="{{true}}" display-multiple-items="1.6" style="height:450rpx;"> -->
+                        <!-- <view class="vert"> -->
+                        <view class='recommend-one line-box vert' wx:for="{{newCartoons}}" wx:key="unique" wx:for-index="idx" wx-if="{{idx>0}}" data-id="{{item.id}}" bindtap='goCartoon' data-type="3"
+                              data-genre="0" style="">
+                            <view class='txt1 eli' style="margin:0 20rpx;">{{item.name}}</view>
+                            <text class='txt2 eli' style="margin:0 20rpx;" decode="{{true}}" space="{{true}}">{{item.labelName}}</text>
+                            <image src='{{item.miAcrossPicUrl}}' style="display:block"/>
+                        </view>
+                        <!-- </view> -->
+                        <!-- </swiper> -->
+                    </view>
+                </view>
+                <!-- 当indextab加class.on 的时候变成固定在顶部的 -->
+                <view class="indextab {{isShowTab?'on':''}}">
+                    <view class='inner'>
+                        <view id="xTab0" class='tab-item verm {{tabState[0]}}' wx:if="{{loveCartoons.length>0}}" bindtap="toTab" data-id="0">言情纯爱</view>
+                        <view id="xTab1" class='tab-item verm {{tabState[1]}}' wx:if="{{mysteryCartoons.length>0}}" bindtap="toTab" data-id="1">悬疑灵异</view>
+                        <view id="xTab2" class='tab-item verm {{tabState[2]}}' wx:if="{{realityCartoons.length>0}}" bindtap="toTab" data-id="2">真人漫画</view>
+                        <view id="xTab3" class='tab-item verm {{tabState[3]}}' wx:if="{{bloodCartoons.length>0}}" bindtap="toTab" data-id="3">少年热血</view>
+                        <view id="xTab4" class='tab-item verm {{tabState[4]}}' wx:if="{{freeCartoons.length>0 && isShowPayContent}}" bindtap="toTab" data-id="4">免费专区</view>
+                        <view id="xTab5" class='tab-item verm {{tabState[5]}}' wx:if="{{ancientCartoons.length>0}}" bindtap="toTab" data-id="5">热门古风</view>
+                        <view id="xTab6" class='tab-item verm {{tabState[6]}}' wx:if="{{likeCartoons.length>0}}" bindtap="toTab" data-id="6">猜你喜欢</view>
+                    </view>
+                </view>
+
+                <view id="tab0" class='recommend' wx:if="{{loveCartoons.length>0}}">
+                    <view class='recommend-header text-center'>
+                        <view class='pull-right' data-type='9' data-sort="4" data-genre="1" bindtap="goMore">
+                            <view class='verm'>查看更多</view>
+                            <image class='verm' src="https://img.ciyuanmh.com/ksmall/images/index_more_icon.png"/>
+                        </view>
+                        言情纯爱
+                    </view>
+                    <view class='recommend-main'>
+                        <block wx:for="{{loveCartoons}}" wx:key="unique">
+                            <view class='recommend-one recommend-two vert eli' data-id="{{item.id}}" bindtap='goCartoon' data-type="4" data-genre="0">
+                                <image src='{{item.miPicUrl}}'/>
+                                <view class='txt1 eli'>{{item.name}}</view>
+                                <text class='txt2 eli' decode="{{true}}" space="{{true}}">{{item.labelName}}</text>
+                            </view>
+                        </block>
+                    </view>
+                </view>
+                <view bindtap="goAd" data-cartoon-id="{{bannerVos[2].cartoonCollectionId}}" data-type="{{bannerVos[2].type}}" data-url="{{bannerVos[2].url}}" data-stat-type="11"
+                      class='recommend-bottom' wx:if="{{(loveCartoons.length>0 || newCartoons.length>0) && bannerVos != null && bannerVos[2] != null && bannerVos[2].status == 0}}">
+                    <image src='{{bannerVos[2].miPicUrl}}'/>
+                </view>
+                <view id="tab1" class='recommend ' wx:if="{{mysteryCartoons.length>0}}">
+                    <view class='recommend-header text-center'>
+                        <view class='pull-right' data-type='10' data-sort="5" data-genre="1" bindtap="goMore">
+                            <view class='verm'>查看更多</view>
+                            <image class='verm' src="https://img.ciyuanmh.com/ksmall/images/index_more_icon.png"/>
+                        </view>
+                        悬疑灵异
+                    </view>
+                    <view class='recommend-main'>
+                        <block wx:for="{{mysteryCartoons}}" wx:key="unique">
+                            <view class='recommend-one recommend-two vert' data-id="{{item.id}}" bindtap='goCartoon' data-type="5" data-genre="0">
+                                <image src='{{item.miPicUrl}}'/>
+                                <view class='txt1 eli'>{{item.name}}</view>
+                                <text class='txt2 eli' decode="{{true}}" space="{{true}}">{{item.labelName}}</text>
+                            </view>
+                        </block>
+                    </view>
+                </view>
+                <view id="tab2" class='recommend' wx:if="{{realityCartoons.length>0}}">
+                    <view class='recommend-header text-center'>
+                        <view class='pull-right' data-type='11' data-sort="6" data-genre="1" bindtap="goMore">
+                            <view class='verm'>查看更多</view>
+                            <image class='verm' src="https://img.ciyuanmh.com/ksmall/images/index_more_icon.png"/>
+                        </view>
+                        真人漫画
+                    </view>
+                    <view class='recommend-main'>
+                        <block wx:for="{{realityCartoons}}" wx:key="unique">
+                            <view class='recommend-one recommend-two vert' data-id="{{item.id}}" bindtap='goCartoon' data-type="6" data-genre="0">
+                                <image src='{{item.miPicUrl}}'/>
+                                <view class='txt1 eli'>{{item.name}}</view>
+                                <text class='txt2 eli' decode="{{true}}" space="{{true}}">{{item.labelName}}</text>
+                            </view>
+                        </block>
+                    </view>
+                </view>
+                <view id="tab3" class='recommend' wx:if="{{bloodCartoons.length>0}}">
+                    <view class='recommend-header text-center'>
+                        <view class='pull-right' data-type='12' bindtap="goMore" data-sort="7" data-genre="1">
+                            <view class='verm'>查看更多</view>
+                            <image class='verm' src="https://img.ciyuanmh.com/ksmall/images/index_more_icon.png"/>
+                        </view>
+                        少年热血
+                    </view>
+                    <view class='recommend-main'>
+                        <block wx:for="{{bloodCartoons}}" wx:key="unique">
+                            <view class='recommend-one recommend-two vert' data-id="{{item.id}}" bindtap='goCartoon' data-type="7" data-genre="0">
+                                <image src='{{item.miPicUrl}}'/>
+                                <view class='txt1 eli'>{{item.name}}</view>
+                                <text class='txt2 eli' decode="{{true}}" space="{{true}}">{{item.labelName}}</text>
+                            </view>
+                        </block>
+                    </view>
+                </view>
+                <view bindtap="goAd" data-cartoon-id="{{bannerVos[3].cartoonCollectionId}}" data-type="{{bannerVos[3].type}}" data-url="{{bannerVos[3].url}}" data-stat-type="11"
+                      class='recommend-bottom'
+                      wx:if="{{(mysteryCartoons.length>0 ||bloodCartoons.length>0 || realityCartoons.length>0 )&&bannerVos != null && bannerVos[3] != null && bannerVos[3].status == 0}}">
+                    <image src='{{bannerVos[3].miPicUrl}}'/>
+                </view>
+                <view id="tab4" class='recommend' wx:if="{{freeCartoons.length>0 && isShowPayContent}}">
+                    <view class='recommend-header text-center'>
+                        <view class='pull-right' data-type='13' bindtap="goMore" data-sort="8" data-genre="1">
+                            <view class='verm'>查看更多</view>
+                            <image class='verm' src="https://img.ciyuanmh.com/ksmall/images/index_more_icon.png"/>
+                        </view>
+                        免费专区
+                    </view>
+                    <view class='recommend-main four'>
+                        <block wx:for="{{freeCartoons}}" wx:key="unique">
+                            <view class='recommend-one' data-id="{{item.id}}" bindtap='goCartoon' data-type="8" data-genre="0">
+                                <image class="vert" src='{{item.miAcrossPicUrl}}'/>
+                                <image class='mian' src='https://img.ciyuanmh.com/ksmall/images/index_fress_boy_icon.png'/>
+                                <view class='vert txt'>
+                                    <view class='txt1 eli'>{{item.name}}</view>
+                                    <view class='txt3 eli2'>{{item.content}}</view>
+                                    <text class='txt2 eli' decode="{{true}}" space="{{true}}">{{item.labelName}}</text>
+                                </view>
+                            </view>
+                        </block>
+                    </view>
+                </view>
+                <view id="tab5" class='recommend' wx:if="{{ancientCartoons.length>0}}">
+                    <view class='recommend-header text-center'>
+                        <view class='pull-right' data-type='14' bindtap="goMore" data-sort="9" data-genre="1">
+                            <view class='verm'>查看更多</view>
+                            <image class='verm' src="https://img.ciyuanmh.com/ksmall/images/index_more_icon.png"/>
+                        </view>
+                        热门古风
+                    </view>
+                    <view class='recommend-main'>
+                        <block wx:for="{{ancientCartoons}}" wx:key="unique">
+                            <view class='recommend-one recommend-two vert' data-id="{{item.id}}" bindtap='goCartoon' data-type="9" data-genre="0">
+                                <image src='{{item.miPicUrl}}'/>
+                                <view class='txt1 eli'>{{item.name}}</view>
+                                <text class='txt2 eli' decode="{{true}}" space="{{true}}">{{item.labelName}}</text>
+                            </view>
+                        </block>
+                    </view>
+                </view>
+                <view id="tab6" class='recommend' wx:if="{{likeCartoons.length>0}}">
+                    <view class='recommend-header text-center '>
+                        <view class='pull-right' data-type='0' bindtap="goMore" data-sort="10" data-genre="1">
+                            <view class='verm'>查看更多</view>
+                            <image class='verm' src="https://img.ciyuanmh.com/ksmall/images/index_more_icon.png"/>
+                        </view>
+                        猜你喜欢
+                    </view>
+                    <view class='recommend-main one'>
+                        <view class='vert' wx:for="{{likeCartoons}}" wx:key="unique" style="padding:10rpx; margin-right:20rpx;">
+                            <view class='recommend-one vert' data-id="{{item.id}}" bindtap='goCartoon' data-type="10" data-genre="0" style="padding:0;width:439rpx;box-shadow:0 0 1rpx 3rpx #e1e1e1;">
+                                <image src='{{item.miAcrossPicUrl}}' style="width:100%;height:275rpx;"/>
+                                <view class='txt1 eli' style="margin:0 20rpx;">{{item.name}}</view>
+                                <text class='txt2 eli' style="margin:0 20rpx;" decode="{{true}}" space="{{true}}">{{item.labelName}}</text>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+                <view class='recommend-btn text-center'>
+                    <!-- <view class='red-btn verm' bindtap="goClassify">
+                      <image class='verm' src='https://img.ciyuanmh.com/ksmall/images/icon39.png'/>
+                      <view class='verm'>全部作品</view>
+                    </view> -->
+
+                    <!-- <view class='blue-btn verm' bindtap="goContribute">
+                      <image class='verm' src='https://img.ciyuanmh.com/ksmall/images/icon40.png'/>
+                      <view class='verm'>我要投稿</view>
+                    </view> -->
+
+                    <view class='more verm' bindtap="goClassify" data-type="2">
+                        <image src='https://img.ciyuanmh.com/ksmall/images/index_all_icon.gif'/>
+                        <view>戳我查看全部作品</view>
+                    </view>
+                </view>
+                <!--
+                  <view class='recommend' wx:if="{{loveCartoons.length>0}}" >
+                    <view class='recommend-header text-center'>
+                      <view class='pull-right' data-type = '9' bindtap="goMore">
+                        <view class='verm' >查看更多</view>
+                        <image class='verm' src="http://img.ciyuanmh.com/ksmall/images/index_more_icon.png"/>
+                      </view>
+                          言情纯爱
+                    </view>
+                    <view class='recommend-main'>
+                      <block wx:for="{{loveCartoons}}" wx:key="unique">
+                        <view class='recommend-one recommend-two vert' data-id="{{item.id}}" bindtap='goCartoon'>
+                          <image src='{{item.miPicUrl}}'/>
+                          <view class='txt1 eli'>{{item.name}}</view>
+                          <text class='txt2 eli'  decode="{{true}}" space="{{true}}">{{item.labelName}}</text>
+                        </view>
+                      </block>
+                    </view>
+                  </view>
+                  <view bindtap="goAd" data-cartoon-id = "{{bannerVos[2].cartoonCollectionId}}" data-type = "{{bannerVos[2].type}}" data-url="{{bannerVos[2].url}}" data-stat-type="11" class='recommend-bottom' wx:if="{{(loveCartoons.length>0 || newCartoons.length>0) && bannerVos != null && bannerVos[2] != null && bannerVos[2].status == 0}}">
+                    <image src='{{bannerVos[2].miPicUrl}}'/>
+                  </view>
+                  <view class='recommend ' wx:if="{{mysteryCartoons.length>0}}" >
+                    <view class='recommend-header text-center'>
+                      <view class='pull-right' data-type = '10' bindtap="goMore">
+                        <view class='verm' >查看更多</view>
+                        <image class='verm' src="http://img.ciyuanmh.com/ksmall/images/index_more_icon.png"/>
+                      </view>悬疑灵异</view>
+                    <view class='recommend-main'>
+                      <block wx:for="{{mysteryCartoons}}" wx:key="unique">
+                        <view class='recommend-one recommend-two vert' data-id="{{item.id}}" bindtap='goCartoon'>
+                          <image src='{{item.miPicUrl}}'/>
+                          <view class='txt1 eli'>{{item.name}}</view>
+                          <text class='txt2 eli'  decode="{{true}}" space="{{true}}">{{item.labelName}}</text>
+                        </view>
+                      </block>
+                    </view>
+                  </view>
+                  <view class='recommend' wx:if="{{realityCartoons.length>0}}"  >
+                    <view class='recommend-header text-center'>
+                      <view class='pull-right' data-type = '11' bindtap="goMore">
+                        <view class='verm' >查看更多</view>
+                        <image class='verm' src="http://img.ciyuanmh.com/ksmall/images/index_more_icon.png"/>
+                      </view> 真人漫画
+                    </view>
+                    <view class='recommend-main'>
+                      <block wx:for="{{realityCartoons}}" wx:key="unique">
+                        <view class='recommend-one recommend-two vert' data-id="{{item.id}}" bindtap='goCartoon'>
+                          <image src='{{item.miPicUrl}}'/>
+                          <view class='txt1 eli'>{{item.name}}</view>
+                          <text class='txt2 eli'  decode="{{true}}" space="{{true}}">{{item.labelName}}</text>
+                        </view>
+                      </block>
+                    </view>
+                  </view>
+                  <view class='recommend' wx:if="{{bloodCartoons.length>0}}" >
+                    <view class='recommend-header text-center'>
+                      <view class='pull-right' data-type = '12' bindtap="goMore">
+                        <view class='verm' >查看更多</view>
+                        <image class='verm' src="http://img.ciyuanmh.com/ksmall/images/index_more_icon.png"/>
+                      </view>
+                          少年热血
+                    </view>
+                    <view class='recommend-main'>
+                      <block wx:for="{{bloodCartoons}}" wx:key="unique">
+                        <view class='recommend-one recommend-two vert' data-id="{{item.id}}" bindtap='goCartoon'>
+                          <image src='{{item.miPicUrl}}'/>
+                          <view class='txt1 eli'>{{item.name}}</view>
+                          <text class='txt2 eli'  decode="{{true}}" space="{{true}}">{{item.labelName}}</text>
+                        </view>
+                      </block>
+                    </view>
+                  </view>
+                  <view bindtap="goAd" data-cartoon-id = "{{bannerVos[3].cartoonCollectionId}}" data-type = "{{bannerVos[3].type}}" data-url="{{bannerVos[3].url}}" data-stat-type="11" class='recommend-bottom' wx:if="{{(mysteryCartoons.length>0 ||bloodCartoons.length>0 || realityCartoons.length>0 )&&bannerVos != null && bannerVos[3] != null && bannerVos[3].status == 0}}">
+                    <image src='{{bannerVos[3].miPicUrl}}'/>
+                  </view>
+                  <view class='recommend' wx:if="{{freeCartoons.length>0}}" >
+                    <view class='recommend-header text-center'>
+                      <view class='pull-right'  data-type = '13' bindtap="goMore">
+                        <view class='verm' >查看更多</view>
+                        <image class='verm' src="http://img.ciyuanmh.com/ksmall/images/index_more_icon.png"/>
+                      </view>
+                          免费专区
+                    </view>
+                    <view class='recommend-main four'>
+                      <block wx:for="{{freeCartoons}}" wx:key="unique">
+                        <view class='recommend-one' data-id="{{item.id}}" bindtap='goCartoon'>
+                          <image class="vert" src='{{item.miAcrossPicUrl}}'/>
+                          <image class='mian' src='https://img.ciyuanmh.com/ksmall/images/index_fress_boy_icon.png'/>
+                          <view class='vert txt'>
+                            <view class='txt1 eli'>{{item.name}}</view>
+                            <view class='txt3 eli2'>{{item.content}}</view>
+                            <text class='txt2 eli'  decode="{{true}}" space="{{true}}">{{item.labelName}}</text>
+                          </view>
+                        </view>
+                      </block>
+                    </view>
+                  </view>
+                  <view class='recommend'  wx:if="{{ancientCartoons.length>0}}">
+                    <view class='recommend-header text-center'>
+                      <view class='pull-right' data-type = '14' bindtap="goMore">
+                        <view class='verm' >查看更多</view>
+                        <image class='verm' src="http://img.ciyuanmh.com/ksmall/images/index_more_icon.png"/>
+                      </view>
+                                热门古风
+                    </view>
+                    <view class='recommend-main'>
+                      <block wx:for="{{ancientCartoons}}" wx:key="unique">
+                        <view class='recommend-one recommend-two vert' data-id="{{item.id}}" bindtap='goCartoon'>
+                          <image src='{{item.miPicUrl}}'/>
+                          <view class='txt1 eli'>{{item.name}}</view>
+                          <text class='txt2 eli'  decode="{{true}}" space="{{true}}">{{item.labelName}}</text>
+                        </view>
+                      </block>
+                    </view>
+                  </view>
+                  <view class='recommend' wx:if="{{likeCartoons.length>0}}" >
+                    <view class='recommend-header text-center '>
+                      <view class='pull-right' data-type = '0' bindtap="goMore">
+                        <view class='verm' >查看更多</view>
+                        <image class='verm' src="http://img.ciyuanmh.com/ksmall/images/index_more_icon.png"/>
+                      </view>
+                              猜你喜欢
+                    </view>
+                    <view class='recommend-main one'>
+                         <view class='vert' wx:for="{{likeCartoons}}" wx:key="unique" style="padding:10rpx; margin-right:20rpx;">
+                            <view class='recommend-one vert' data-id="{{item.id}}" bindtap='goCartoon' style="padding:0;width:439rpx;box-shadow:0 0 1rpx 3rpx #e1e1e1;">
+                              <image src='{{item.miAcrossPicUrl}}' style="width:100%;height:275rpx;"/>
+                              <view class='txt1 eli' style="margin:0 20rpx;">{{item.name}}</view>
+                              <text class='txt2 eli'  style="margin:0 20rpx;" decode="{{true}}" space="{{true}}">{{item.labelName}}</text>
+                            </view>
+                         </view>
+                    </view>
+                  </view>-->
+
+            </view>
+
+        </view>
+        <view class="{{isAdvert==0?'overfly5':isAdvert==1?' overfly5 on':'overfly5 on off'}}">
+            <view class='advert' data-stat-type="11" data-url="{{activityAdVo != null?activityAdVo.url:''}}">
+                <image bindtap="goAd" mode="widthFix" src='{{activityAdVo.miPicUrl}}'/>
+                <view>
+                    <image src='https://img.ciyuanmh.com/ksmall/images/icon71.png' bindtap="closeAdvert"/>
+                </view>
+            </view>
+
+        </view>
+
+
+        <!-- 有奖问答 -->
+        <view class='overfly6' wx-if="{{isShowPaperDialog}}">
+            <view class='redeem-img'>
+                <image src='https://img.ciyuanmh.com/ksmall/images/tc_bg.png'/>
+            </view>
+            <view class='redeem-inner'>
+
+                <!-- <view class='redeem-header'>
+                  <view class='verm img'>
+                    <image src='https://img.ciyuanmh.com/ksmall/images/dt_money_icon.png' />
+                   </view><view class='verm txt'>
+                      <view class='txt1'>{{paperActivity.name}}</view>
+                      <view class='txt2'>答题送红包啦！</view>
+                   </view>
+                </view> -->
+                <view class='redeem-time redeem-main'>
+                    <view class='redeem-left vert'>
+                        时间：
+                    </view>
+                    <view class='redeem-right vert'>
+                        {{paperActivity.startDateStr}}-{{paperActivity.endDateStr}}
+                    </view>
+                </view>
+                <view class='redeem-main'>
+                    <view class='redeem-left vert'>
+                        内容：
+                    </view>
+                    <view class='redeem-right vert'>
+                        <view wx-if="{{paperActivity.isExtra == 1}}">
+                            在{{paperActivity.extraStartDateStr}}-{{paperActivity.extraEndDateStr}}提交问卷可领取{{paperActivity.giveCoins}}阅读币，另外多送{{paperActivity.extraGiveCoins}}阅读币红包；
+                        </view>
+                        <view>在 {{paperActivity.startDateStr}}-{{paperActivity.endDateStr}}填写问卷可领取{{paperActivity.giveCoins}}阅读币，抓紧把握，每人一次机会哟！</view>
+                    </view>
+                </view>
+                <view class='redeem-btn'>
+                    <view class='verm btn1' bindtap="closePaperDialog">
+                        下次
+                    </view>
+                    <view class='verm btn2' bindtap="goPaper">
+                        开始
+                    </view>
+                </view>
+            </view>
+        </view>
+    </scroll-view>
+    <!-- 邀请好友提示 -->
+    <view class='overfly7' wx-if="{{isShowShareDialog && isShowPayContent}}" catchtouchmove='true'>
+        <view class='over7 text-center'>
+            <view class='verm top'>
+                <view class='pic'>
+                    <image src='https://img.ciyuanmh.com/ksmall/images/tc_icon.png'/>
+                </view>
+                <image src='https://img.ciyuanmh.com/ksmall/images/tc_gb_icon.png' bindtap="closeShareDialog"/>
+                <view class='txt1'>
+                    <view class='verb'>{{shareTaskUserItem.giveCoins}}</view>
+                    赠币
+                </view>
+                <view class='txt2'>邀请{{shareTaskUserItem.taskNum}}位新用户即可获得{{shareTaskUserItem.giveCoins}}赠币</view>
+            </view>
+            <!--
+            <view class='middle verm' bindtap="inviteUser">
+                      邀请好友
+            </view>
+            -->
+            <button type="default" send-message-title="{{shareTaskParams.title}}" send-message-path="{{shareTaskParams.path}}" send-message-img="{{shareTaskParams.img}}" class='middle verm'
+                    bindtap="inviteUser" open-type="share">邀请好友
+            </button>
+            <view class='bottom' bindtap="goTask">
+                <view class='verm'>赚取更多</view>
+            </view>
+            <view class='bottom-one' bindtap="neverTip">
+                <view class='verm'>不再提示</view>
+            </view>
+        </view>
+    </view>
+
+    <import src="/pages/footer/footer.wxml"/>
+    <template is="footer" data="{{goTab:goTab,tabIndex:tabIndex}}"/>
+</view>

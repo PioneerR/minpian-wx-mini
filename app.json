@@ -1,5 +1,9 @@
 {
   "pages":[
+    "pages/index/index",
+    "pages/login/login",
+
+
     "pages/businessCard/businessCard",
     "pages/interaction/interaction",
     "pages/ShoppingMall/ShoppingMall",
