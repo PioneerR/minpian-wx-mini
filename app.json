@@ -29,26 +29,26 @@
       {
         "pagePath":"pages/businessCard/businessCard",
         "text":"名片",
-        "iconPath":"images/businessCard_gray_64px.png",
-        "selectedIconPath":"images/businessCard_blue_64px.png"
+        "iconPath":"static/images/businessCard_gray_64px.png",
+        "selectedIconPath":"static/images/businessCard_blue_64px.png"
       },
       {
         "pagePath": "pages/interaction/interaction",
         "text": "动态",
-        "iconPath": "images/interaction_gray_64px.png",
-        "selectedIconPath": "images/interaction_blue_64px.png"
+        "iconPath": "static/images/interaction_gray_64px.png",
+        "selectedIconPath": "static/images/interaction_blue_64px.png"
       },
       {
         "pagePath": "pages/ShoppingMall/ShoppingMall",
         "text": "商城",
-        "iconPath": "images/ShoppingMall_gray_64px.png",
-        "selectedIconPath": "images/ShoppingMall_blue_64px.png"
+        "iconPath": "static/images/ShoppingMall_gray_64px.png",
+        "selectedIconPath": "static/images/ShoppingMall_blue_64px.png"
       },
       {
         "pagePath": "pages/OfficialWeb/OfficialWeb",
         "text": "官网",
-        "iconPath": "images/OfficialWeb_gray_64px.png",
-        "selectedIconPath": "images/OfficialWeb_blue_64px.png"
+        "iconPath": "static/images/OfficialWeb_gray_64px.png",
+        "selectedIconPath": "static/images/OfficialWeb_blue_64px.png"
       }
     ]
   },
