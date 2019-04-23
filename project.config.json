@@ -14,7 +14,7 @@
 	"compileType": "miniprogram",
 	"libVersion": "2.6.4",
 	"appid": "wx51e0d34f3db488ba",
-	"projectname": "%E5%90%8D%E7%89%87%E5%95%86%E5%9F%8E",
+	"projectname": "wx_mini_minpian",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},

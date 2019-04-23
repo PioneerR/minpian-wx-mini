@@ -1,20 +1,16 @@
 {
   "pages":[
-    "pages/index/index",
-    "pages/login/login",
-
-
+    "pages/ShoppingMall/ShoppingMall",
     "pages/businessCard/businessCard",
     "pages/interaction/interaction",
-    "pages/ShoppingMall/ShoppingMall",
     "pages/OfficialWeb/OfficialWeb"
   ],
 
   "window":{
     "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#ff5a5e",
+    "navigationBarBackgroundColor": "#000",
     "navigationBarTitleText": "微信名片",
-    "navigationBarTextStyle":"#fff",
+    "navigationBarTextStyle":"white",
     "enablePullDownRefresh":true,
     "backgroundColor":"#eee"
   },
@@ -29,26 +25,26 @@
       {
         "pagePath":"pages/businessCard/businessCard",
         "text":"名片",
-        "iconPath":"images/businessCard_gray_64px.png",
-        "selectedIconPath":"images/businessCard_blue_64px.png"
+        "iconPath":"static/images/businessCard_gray_64px.png",
+        "selectedIconPath":"static/images/businessCard_blue_64px.png"
       },
       {
         "pagePath": "pages/interaction/interaction",
         "text": "动态",
-        "iconPath": "images/interaction_gray_64px.png",
-        "selectedIconPath": "images/interaction_blue_64px.png"
+        "iconPath": "static/images/interaction_gray_64px.png",
+        "selectedIconPath": "static/images/interaction_blue_64px.png"
       },
       {
         "pagePath": "pages/ShoppingMall/ShoppingMall",
         "text": "商城",
-        "iconPath": "images/ShoppingMall_gray_64px.png",
-        "selectedIconPath": "images/ShoppingMall_blue_64px.png"
+        "iconPath": "static/images/ShoppingMall_gray_64px.png",
+        "selectedIconPath": "static/images/ShoppingMall_blue_64px.png"
       },
       {
         "pagePath": "pages/OfficialWeb/OfficialWeb",
         "text": "官网",
-        "iconPath": "images/OfficialWeb_gray_64px.png",
-        "selectedIconPath": "images/OfficialWeb_blue_64px.png"
+        "iconPath": "static/images/OfficialWeb_gray_64px.png",
+        "selectedIconPath": "static/images/OfficialWeb_blue_64px.png"
       }
     ]
   },

@@ -5,11 +5,26 @@
   <view class="good">
     <scroll-view scroll-x upper-threshold="50" class="scrollView" >
       <block wx:for="{{tabList}}">
-        <view class="swiperTabList {{currentIndex==item.index ? 'on' : ''}}" bindtap="swichNav">{{item.tabtext}}</view>
+        <view class="swiperTabList {{currentIndex==item.index ? 'on' : ''}}" data-current="{{item.index}}" bindtap="swichNav">{{item.tabtext}}</view>
       </block>
     </scroll-view>
     <view class="goodList">
-
+      <swiper bindchange="swiper" class="swiper" current="{{currentIndex}}" duration="{{duration}}" easing-function="easeInOutCubic" style='height:{{swiperHeight}}px'>
+          <block wx:for="{{goodList}}">
+            <swiper-item>
+              <block wx:for="{{item.good}}" wx:for-item="goodItem">
+                <view class="goodView">
+                  <image class="goodImg" src="{{goodItem.src}}" mode="{{imageMode}}"></image>
+                  <text class="goodName">{{goodItem.goodName}}</text>
+                  <text class="goodPrice">{{goodItem.goodPrice}}</text>
+                  <text class="goodDiscountPrice">{{goodItem.discountPrice}}</text>
+                  <text class="salesVolume">已售{{goodItem.goodSalesVolume}}件</text>
+                </view>
+              </block>
+            </swiper-item>
+          </block>
+      </swiper>
     </view>
+    <view class="liner"></view>
   </view>
 </view>
