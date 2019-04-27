@@ -5,6 +5,7 @@ App({
 		logs.unshift(Date.now());
 		wx.setStorageSync('logs', logs);
 
+		//测试webstorm - merge功能
 		// 登录
 		wx.login({
 			success: res => {
