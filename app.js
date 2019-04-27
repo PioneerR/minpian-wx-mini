@@ -5,7 +5,6 @@ App({
 		logs.unshift(Date.now());
 		wx.setStorageSync('logs', logs);
 
-		//测试webstorm
 		// 登录
 		wx.login({
 			success: res => {
