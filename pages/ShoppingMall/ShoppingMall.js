@@ -12,7 +12,7 @@ Page({
       { tabtext: '茶生活', index: 5 },
       { tabtext: '高端茶', index: 6 }
     ],
-    swiperHeight:1080,
+    swiperHeight: 1080,
     duration: 500,
     goodList: [
       { 
@@ -65,7 +65,8 @@ Page({
           { goodName: '菊花茶', src: "../../static/images/ShoppingMall/goods.jpg", goodId: 6, goodImg: "", goodPrice: "", discountPrice: "￥158", goodSalesVolume: 8 }
         ]
        },
-    ]
+    ],
+    goodDetailId:0
   },
   onLoad: function () {
     this.setData({
@@ -88,4 +89,13 @@ Page({
       })
     }
   },
+  goDetails:function (e) {
+    var that = this;
+    that.setData({
+      goodDetailId: e.currentTarget.dataset.id
+    })
+    wx.navigateTo({
+      url: '../GoodsDetail/GoodsDetail?goodId=' + that.data.goodDetailId
+    })
+  }
 })

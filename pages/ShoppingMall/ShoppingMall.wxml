@@ -13,7 +13,7 @@
           <block wx:for="{{goodList}}">
             <swiper-item>
               <block wx:for="{{item.good}}" wx:for-item="goodItem">
-                <view class="goodView">
+                <view class="goodView" catchtap='goDetails' data-id="{{goodItem.goodId}}">
                   <image class="goodImg" src="{{goodItem.src}}" mode="{{imageMode}}"></image>
                   <text class="goodName">{{goodItem.goodName}}</text>
                   <text class="goodPrice">{{goodItem.goodPrice}}</text>
