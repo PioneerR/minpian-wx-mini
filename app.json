@@ -3,7 +3,8 @@
     "pages/ShoppingMall/ShoppingMall",
     "pages/businessCard/businessCard",
     "pages/interaction/interaction",
-    "pages/OfficialWeb/OfficialWeb"
+    "pages/OfficialWeb/OfficialWeb",
+    "pages/GoodsDetail/GoodsDetail"
   ],
 
   "window":{
