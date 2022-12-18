@@ -1,20 +1,17 @@
 {
   "pages":[
-    "pages/index/index",
-    "pages/login/login",
-
-
+    "pages/ShoppingMall/ShoppingMall",
     "pages/businessCard/businessCard",
     "pages/interaction/interaction",
-    "pages/ShoppingMall/ShoppingMall",
-    "pages/OfficialWeb/OfficialWeb"
+    "pages/OfficialWeb/OfficialWeb",
+    "pages/GoodsDetail/GoodsDetail"
   ],
 
   "window":{
     "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#ff5a5e",
+    "navigationBarBackgroundColor": "#000",
     "navigationBarTitleText": "微信名片",
-    "navigationBarTextStyle":"#fff",
+    "navigationBarTextStyle":"white",
     "enablePullDownRefresh":true,
     "backgroundColor":"#eee"
   },

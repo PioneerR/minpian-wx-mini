@@ -1,0 +1,25 @@
+<view class="page">
+  <view>
+    <swiper class="swiper" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" easing-function="{{easingFunction}}">
+       <block wx:for="{{goodImgSrcs}}">
+          <swiper-item>
+            <view class="swiperImgView">
+              <image class="swiperImg" src="{{item.src}}" mode='{{imgModeWidthFix}}'></image>
+            </view>
+          </swiper-item>
+        </block>
+    </swiper>
+  </view>
+  <view class="goodPriceInfo">
+    <text class="goodName">{{goodName}}</text>
+    <text class="discountPrice">{{discountPrice}}</text>
+    <text class="goodPrice">{{goodPrice}}</text>
+    <text class="goodSalesVolume">已售{{goodSalesVolume}}件</text>
+  </view>
+  <view class="goodDetailInfo">
+    <text class="txtGoodDetailInfo">{{goodDetailInfo}}</text>
+    <block wx:for="{{goodDetailImg}}">
+      
+    </block>
+  </view>
+</view>
